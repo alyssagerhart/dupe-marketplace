@@ -1,7 +1,8 @@
 import React, {useState} from 'react'
 import {BiSearch} from 'react-icons/bi'
 import {BsPerson} from 'react-icons/bs'
-import {HiOutlineMenu, HiOutlineMenuAlt4} from 'react-icons/hi'
+import {Link} from 'react-router-dom'
+import {HiOutlineMenuAlt4} from 'react-icons/hi'
 import {FaFacebook, FaInstagram, FaPinterest, FaYoutube, FaTwitter} from 'react-icons/fa'
 import {AiOutlineClose} from 'react-icons/ai'
 import './NavbarStyles.css'
@@ -15,9 +16,9 @@ function Navbar() {
                 <h2>DUPE.</h2>
             </div>
             <ul className='nav-menu'>
-                <li>Home</li>
-                <li>Suggest A Dupe</li>
-                <li>Search By Category</li>
+                <li><Link to="/">Home</Link></li>
+                <li><Link to="/Suggest">Suggest A Dupe</Link></li>
+                <li><Link to="/Search">Search By Category</Link></li>
                </ul>
             <div className="nav-icons"> 
                 <BiSearch className = 'icon' style={{marginRight: '1rem'}}/>
@@ -30,9 +31,9 @@ function Navbar() {
 
             <div className={nav ? 'mobile-menu active': 'mobile-menu'}>
                 <ul className='mobile-nav'>
-                    <li>Home</li>
-                    <li>Suggest A Dupe</li>
-                    <li>Search By Category</li>
+                    <li><Link to="/">Home</Link></li>
+                    <li><Link to="/Suggest">Suggest A Dupe</Link></li>
+                    <li><Link to="/Search">Search By Category</Link></li>
                 </ul>
                 <div className="mobile-menu-bottom">
                     <div className='menu-icons'>

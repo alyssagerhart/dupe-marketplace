@@ -9,7 +9,9 @@
     position: absolute;
     color: #fff;
 }
-
+.nav-menu li{
+    display: inline-block;
+}
 .nav-menu{
     display: flex;
     justify-content: space-between;
