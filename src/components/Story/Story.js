@@ -1,11 +1,11 @@
 import React from 'react'
-import './SearchStyles.css'
+import './StoryStyles.css'
 
 import Logo from '../../assets/dupe logo.JPG'
 
-function Search() {
+function Story() {
     return (
-        <div name='book' className='search'>
+        <div name='book' className='story'>
             <div className="container">
                 <div className="left">
                     <h2>Our Story</h2>
@@ -21,4 +21,4 @@ function Search() {
     )
 }
 
-export default Search
+export default Story
