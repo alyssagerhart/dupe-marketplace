@@ -1,20 +1,17 @@
 import React from 'react';
+import Home from '../components/Home/Home';
 import Navbar from '../components/Navbar/Navbar';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Homepage from './Homepage';
+
+
 
 
 function Suggest() {
     return (
-      <>
-        <Router>
-          <Navbar />
-          <Routes>
-            <Route path='/' exact component={Suggest} />
-          </Routes>
-        </Router>
-      </>
+       <div>
+           <Navbar /> 
+          <Home />
+        </div>
     );
   }
- 
+  
  export default Suggest;
