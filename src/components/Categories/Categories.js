@@ -1,6 +1,4 @@
 import React from 'react'
-import './CategoriesStyles.css'
-
 import Leggings from '../../assets/leggings.webp'
 import MakeUp from '../../assets/makeup.webp'
 import Perfume from '../../assets/perfume.jpg'

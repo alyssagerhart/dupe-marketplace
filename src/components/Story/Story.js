@@ -1,5 +1,5 @@
 import React from 'react'
-import './StoryStyles.css'
+
 
 import Logo from '../../assets/dupe logo.JPG'
 

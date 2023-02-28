@@ -33,16 +33,3 @@
 .image-grid-row-2 {
     grid-row: span 2;
 }
-
-@media screen and (max-width: 940px) {
-    .img-container {
-        --num-cols: 2;
-        --row-height:200px;
-        --grap: .5rem;
-    }
-
-    .span-3 {
-        grid-column: span 2;
-    }
-}
-    

@@ -1,28 +1,29 @@
 import React from 'react'
+import Homepage from './Pages/Homepage'
 import Navbar from './components/Navbar/Navbar'
+import Suggest from './Pages/Suggest'
 import Home from './components/Home/Home'
-import Comparisons from './components/Comparisons/Comparisons'
+import Comparison from './components/Comparisons/Comparisons'
 import Story from './components/Story/Story'
 import Categories from './components/Categories/Categories'
-import Suggest from './components/Suggest/Suggest'
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 function App() {
-  return (
-     <div>
-        <BrowserRouter>
-          <Navbar />
-          <Switch>
-            <Route path="/suggest" component={Suggest} />
-            <Route path="/categories" component={Categories} />
-          </Switch>
-        </BrowserRouter>
-        <Home />
-        <Categories />
-        <Comparisons />
-        <Story />
-      </div>
-  );
-}
+   return (
+     <>
+       <Router>
+         <Navbar />
+         <Home />
+         <Categories />
+         <Comparison />
+         <Story />
+         <Routes>
+           <Route path='/' exact component={Homepage} />
+           <Route path='/suggest' exact component={Suggest} />
+         </Routes>
+       </Router>
+     </>
+   );
+ }
 
 export default App;
