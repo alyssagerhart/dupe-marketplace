@@ -1,0 +1,9 @@
+li {
+    display: inline;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  li:hover {
+    background-color: #ddd;
+  }

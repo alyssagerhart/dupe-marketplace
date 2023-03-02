@@ -3,9 +3,10 @@ import './HomeStyles.css'
 import { AiOutlineSearch } from 'react-icons/ai'
 
 import Video from '../../assets/shoppingtl.mp4'
+
 function Home() {
     return (
-        <div className= 'home'>
+        <div className='home'>
             <video autoPlay loop muted id='video'>
                 <source src={Video} type='video/mp4' />
             </video>

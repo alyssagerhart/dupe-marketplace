@@ -1,15 +1,12 @@
 import React from 'react';
-import Home from '../components/Home/Home';
+import SuggestForm from '../components/SuggestForm/SuggestForm';
 import Navbar from '../components/Navbar/Navbar';
-
-
-
 
 function Suggest() {
     return (
        <div>
            <Navbar /> 
-          <Home />
+          <SuggestForm />
         </div>
     );
   }
