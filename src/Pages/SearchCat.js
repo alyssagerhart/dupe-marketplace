@@ -1,12 +1,12 @@
 import React from 'react';
-import Search from '../components/Search/Search';
+import Products from '../components/Products/products';
 import Navbar from '../components/Navbar/Navbar';
 
 function SearchCat() {
   return (
      <div>
         <Navbar />
-         <Search />
+         <Products />
       </div>
   );
 }

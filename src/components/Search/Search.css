@@ -7,3 +7,16 @@ li {
   li:hover {
     background-color: #ddd;
   }
+  .category-options {
+    text-align: center;
+  }
+  
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .category-list {
+    list-style: none;
+    padding: 0;
+  }

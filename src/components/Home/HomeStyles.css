@@ -23,46 +23,48 @@
 
 .home .content {
     position: absolute;
-    top: 0;
-    height: 100%;
+    top: 45%;
+    left: 32%;
     display: flex;
-    justify-content: center;
     flex-direction: column;
     text-align: center;
-    width: 100%;
+ 
     margin: auto;
     padding: 1rem;
 }
 
+
 .form {
-    display: flex;
-    background-color: #ffffffcc;
-    color: #000;
-    align-items: center;
+    margin: 20px;
+    padding: 20px;
     border: 1px solid #ccc;
-    padding: 4px;
-    border-radius: 8px;
-    max-width: 700px;
-    width: 100%;
+    border-radius: 5px;
+    background-color: #fff;
+    width: 800px;
+    height: 90px;
     margin: 0 auto;
 }
 
 .form input[type=text] {
     border: transparent;
     background-color: transparent;
-    width: 400px;
+    /* width: 400px; */
     font-size: 1.2rem;
     font-family: 'Poppins',sans-serif;
-    margin: 0 auto;
+    /* margin: 0 auto; */
 }
 
 .form input[type=text]:focus {
     outline: none;
 }
 
-@media screen and (max-width: 940px) {
-    .form input[type=text] {
-        max-width: 275px;
-    }
-
+.form .icon {
+    position: absolute;
+    top: 50%;
+    left: 85%;
+    transform: translate(-50%, -50%);
+    color: #ccc;
+    font-size: 1.5rem;
+    transition: 0.3s;
+   
 }

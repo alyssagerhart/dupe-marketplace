@@ -1,12 +1,4 @@
-form {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f7f7f7;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-  }
-  
+
   label {
     display: block;
     margin-bottom: 5px;
@@ -49,17 +41,16 @@ form {
     background-color: #0056b3;
   }
 
-  .form-container {
-    display:grid;
-    grid-template-columns: repeat(2, 1fr);
-  }
   
   .form {
     margin: 20px;
     padding: 20px;
-    border: 1px solid #ccc;
     border-radius: 5px;
-    width: 400px;
+    width: 700px;
+    margin: 0 auto;
+    position: absolute;
+    top: 12%;
+    left: 27%;
   }
   .home{
     width: 100%;
@@ -69,18 +60,17 @@ form {
 }
 .bri{
     background-image: url("../../assets/suggestion.jpeg"); 
-}
-.span-3 {
-    grid-column: span 3;
-}
-
-  @media (max-width: 768px) {
-    .form-container {
-      flex-direction: column;
-      align-items: center;
-      display:grid;
-      grid-template-columns: repeat(2, 1fr);
-      grid-gap: 20px;
-      justify-content: center;
-    }
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
   }
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.1);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
