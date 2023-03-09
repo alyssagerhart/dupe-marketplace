@@ -1,11 +1,4 @@
-// firebase.js
-
-// import Firebase from "firebase/compat/app";
-// import "firebase/compat/firestore";
-// import "firebase/compat/auth";
-// import "firebase/compat/storage";
-// import { getStorage} from "firebase/storage";
-// import { getDatabase } from "firebase/database";
+import { getFirestore } from "@firebase/firestore";
 import {initializeApp, getApps, getApp} from 'firebase/app'
 
 const firebaseConfig = {
@@ -29,10 +22,5 @@ if (getApps().length === 0) {
 }
 
 export const firebaseApp = app
-
-// const firebase = Firebase.initializeApp(firebaseConfig);
-// const storage = getStorage(firebase);
-// const database = getDatabase(firebase);
-// var db = firebase.firestore(firebase);
-
-// export { db, storage, database, firebase as default };
+export const application = initializeApp(firebaseConfig);
+export const db = getFirestore();

@@ -2,6 +2,7 @@ import React from 'react'
 import Homepage from './Pages/Homepage'
 import Navbar from './components/Navbar/Navbar'
 import Suggest from './Pages/Suggest'
+import SearchCat from './Pages/SearchCat'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
          <Routes>
          <Route exact path="/" element={<Homepage/>} />
          <Route exact path="/suggest" element={<Suggest/>} />
+          <Route exact path="/search" element={<SearchCat/>} />
          </Routes>
        </Router>
      </>
