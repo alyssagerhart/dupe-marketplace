@@ -1,7 +1,7 @@
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../firebase/firebase";
 
-const docRef = doc(db, "category", "name", "description", "photoUrl");
+const docRef = doc(db,"brandname", "category", "name", "description", "photoUrl");
 const docSnap = await getDoc(docRef);
 
 if (docSnap.exists()) {

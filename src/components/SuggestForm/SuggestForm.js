@@ -10,6 +10,7 @@ const SuggestForm = () => {
   const [formData, setFormData] = useState({
     category: '',
     name: '',
+    brandname: '',
     description: '',
   })
 
@@ -42,8 +43,9 @@ const SuggestForm = () => {
     const uploadedPhotoUrl = await getDownloadURL(result.ref)
 
     // get data from form and add image url
-    const {category, name, description} = formData
+    const {brandname, category, name, description} = formData
     const newProduct = {
+      brandname,
       category,
       name,
       description,
@@ -59,8 +61,7 @@ const SuggestForm = () => {
 return(
  <div className="bri">
       <div className="form">
-        <form onSubmit={submitData}>
-          <h1>Dupe:</h1>
+        <form onSubmit={submitData} style={{position: "absolute", top:"100px", left:"37%"}}>
           <select
             onChange={handleInputChange}
             id="dupecategory"
@@ -71,13 +72,19 @@ return(
             <option value="Make-up">Make-up</option>
             <option value="Perfume">Perfume</option>
           </select>
-          <label for="dupename">Name:</label>
+          <label for="dupename">Dupe Name:</label>
           <textarea
             onChange={handleInputChange}
             id="dupename"
             name="name"
           ></textarea>
-          <label for="dupephotos">Photos:</label>
+           <label for="brandname">Brand Name Item:</label>
+          <textarea
+            onChange={handleInputChange}
+            id="brandname"
+            name="brandname"
+          ></textarea>
+          <label for="dupephotos">Dupe Photo:</label>
           <input
             type="file"
             id="dupephotos"
@@ -86,7 +93,7 @@ return(
             onChange={handleFileSelect}
           ></input>
 
-          <label for="dupedescription">Description:</label>
+          <label for="dupedescription">Description of Item:</label>
           <textarea
             onChange={handleInputChange}
             id="dupedescription"

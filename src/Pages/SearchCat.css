@@ -1,0 +1,16 @@
+body {
+    background-image: url("../assets/smooth.jpg");
+    background-size: cover;
+    background-position: center;
+    color: white;
+  }
+  
+.background{
+    position: absolute;
+    top: 80px;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
