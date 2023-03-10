@@ -1,5 +1,5 @@
 body {
-    background-image: url("../assets/smooth.jpg");
+    background-image: url("../assets/backgroundcalm.jpg");
     background-size: cover;
     background-position: center;
     color: white;
@@ -13,4 +13,7 @@ body {
 a {
     color: white;
     text-decoration: none;
+}
+.container {
+    display: flex
 }

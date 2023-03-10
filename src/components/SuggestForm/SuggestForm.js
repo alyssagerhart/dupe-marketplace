@@ -12,6 +12,7 @@ const SuggestForm = () => {
     name: '',
     brandname: '',
     description: '',
+    link: '',
   })
 
   const handleFileSelect = (e) => {
@@ -43,12 +44,13 @@ const SuggestForm = () => {
     const uploadedPhotoUrl = await getDownloadURL(result.ref)
 
     // get data from form and add image url
-    const {brandname, category, name, description} = formData
+    const {brandname, category, name, description, link} = formData
     const newProduct = {
       brandname,
       category,
       name,
       description,
+      link,
       photoUrl: uploadedPhotoUrl,
     }
 
@@ -61,7 +63,7 @@ const SuggestForm = () => {
 return(
  <div className="bri">
       <div className="form">
-        <form onSubmit={submitData} style={{position: "absolute", top:"100px", left:"37%"}}>
+        <form onSubmit={submitData} style={{position: "absolute", top:"100px", left:"42%"}}>
           <select
             onChange={handleInputChange}
             id="dupecategory"
@@ -98,6 +100,13 @@ return(
             onChange={handleInputChange}
             id="dupedescription"
             name="description"
+          ></textarea>
+
+           <label for="link">Link to Item:</label>
+          <textarea
+            onChange={handleInputChange}
+            id="link"
+            name="link"
           ></textarea>
 
           <input type="submit" onClick={submitData} value="Submit"></input>

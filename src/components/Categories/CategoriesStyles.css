@@ -7,6 +7,9 @@
 .comparisons h1{
     padding: 1rem;
 }
+.transp{
+    background-color: transparent;
+}
 
 .img-container {
     --gap:1rem;
