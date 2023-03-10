@@ -51,7 +51,7 @@ function SearchCat() {
 
   return (
     <div className="container">
-      <div className="sidebar" style={{position:"absolute", top: "80px", left:"15px"}}>
+      <div className="sidebar" style={{position:"absolute", top: "150px", left:"15px"}}>
       <div class="filter-sort">
   <h2>Filter & Sort</h2>
   <form>
@@ -103,14 +103,13 @@ function SearchCat() {
       <input type="checkbox" name="type" value="shoes" />
       Shoes
     </label>
-    
-    <button type="submit">Apply Filters & Sort</button>
+
   </form>
 </div>
 
       </div>
       <div className="main">
-        <div className="background" style={{position:"absolute", left: "50%", top:"80px"}}>
+        <div className="background" style={{position:"absolute", left: "20%", top:"80px"}}>
           {Object.entries(groupedData).map(([category, products]) => (
             <div
               key={category}
@@ -172,13 +171,6 @@ function SearchCat() {
           ))}
         </div>
       </div>
-      <div className="search">
-            {products.map((product) => (
-                <div key={product.id} className="product-card">
-                    {/* render product card */}
-                </div>
-            ))}
-        </div>
     </div>
   );
 }

@@ -17,13 +17,13 @@
     left: 0;
     height: 100%;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.4);
   }
   
   .content {
     position: absolute;
     top: 50%;
-    left: 50%;
+    left: 47%;
     transform: translate(-50%, -50%);
     text-align: center;
     color: white;
@@ -42,8 +42,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 500px;
-    height: 50px;
+    width: 700px;
+    height: 100px;
   }
   
   input[type="text"] {
@@ -60,8 +60,9 @@
     background-color: #007bff;
     color: white;
     cursor: pointer;
-    position: relative;
-    top: 1%;
+    position: absolute;
+    top: 218px;
+    left: 700px;
   }
   
   .dropdown ul {
@@ -95,4 +96,6 @@
     justify-content: center;
     align-items: center;
     margin-top: 100px;
+    width: 700px;
+    height: 100px;
 }
