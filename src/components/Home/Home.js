@@ -20,10 +20,10 @@ function Home() {
     const [products, setProducts] = useState([]);
 
 
-    const handleDropdownSelect = (selectedOption) => {
-      setSearchTerm(selectedOption);
-      navigate.push(`/search?brandname=${selectedOption}`);
-    };
+    // const handleDropdownSelect = (selectedOption) => {
+    //   setSearchTerm(selectedOption);
+    //   navigate.push(`/search?brandname=${selectedOption}`);
+    // };
   
     const userData = async () => {
       const q = query(collection(db, "products"));

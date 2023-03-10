@@ -6,8 +6,9 @@ import "./SearchCat.css";
 
 function SearchCat() {
   const [details, setDetails] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState(null);
   const location = useLocation();
-  const [products, setProducts] = useState([]);
+  const [, setProducts] = useState([]);
 
   useEffect(() => {
     const brandname = new URLSearchParams(location.search).get("brandname");
@@ -40,7 +41,11 @@ function SearchCat() {
     userData();
   }, []);
 
-  const groupedData = details.reduce((acc, curr) => {
+  const filteredData = details.filter(
+    (product) => selectedCategory === null || product.category === selectedCategory
+  );
+
+  const groupedData = filteredData.reduce((acc, curr) => {
     if (curr.category in acc) {
       acc[curr.category].push(curr);
     } else {
@@ -48,6 +53,12 @@ function SearchCat() {
     }
     return acc;
   }, {});
+
+  const handleCategoryClick = (category) => {
+    setSelectedCategory(category);
+  };
+
+
 
   return (
     <div className="container">
@@ -136,7 +147,7 @@ function SearchCat() {
                       flexDirection: "row",
                     }}
                   >
-                    <a href={product.link}>
+                    <a href={`search/${product.id}`}>
                       <img
                         style={{
                           margin: "0 auto",
@@ -147,7 +158,7 @@ function SearchCat() {
                         alt="product"
                       />
                     </a>
-                    <div style={{ flexGrow: "1", textAlign: "center" }}>
+                    <a href={product.link}><div style={{ flexGrow: "1", textAlign: "center" }}>
                       <p
                         style={{
                           fontSize: "16px",
@@ -161,18 +172,24 @@ function SearchCat() {
                         {product.brandname}
                       </p>
                       <p style={{ fontSize: "14px", margin: "0" }}>
-                        {product.description}
+                        {product.description} <br></br>CLICK HERE TO BUY
                       </p>
-                    </div>
+                    </div></a>
                   </div>
                 ))}
               </div>
+            
             </div>
           ))}
         </div>
       </div>
     </div>
-  );
+
+  )          
+
 }
+
+
+
 
 export default SearchCat;

@@ -5,7 +5,7 @@ import './NavbarStyles.css'
 
 function Navbar() {
     const [nav, setNav] = useState(false)
-    const handleNav = () => setNav(!nav)
+    // const handleNav = () => setNav(!nav)
     return (
         <div className={nav ? 'navbar navbar-bg' : 'navbar'} style={{backgroundColor: "(0, 0, 0, .75)"}}>
             <div className={nav ? 'logo dark' : 'logo'}>
