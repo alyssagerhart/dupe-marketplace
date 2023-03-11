@@ -27,14 +27,14 @@ function SearchCat() {
     fetchProducts();
   }, [location]);
 
-  const userData = async () => {
+  const userData = async (selectedCategory) => {
     const q = query(collection(db, "products"));
     const querySnapshot = await getDocs(q);
     const data = querySnapshot.docs.map((doc) => ({
       ...doc.data(),
       id: doc.id,
     }));
-    setDetails(data);
+    setDetails(selectedCategory ? data.filter((product) => product.category === selectedCategory) : data);
   };
 
   useEffect(() => {
@@ -55,67 +55,34 @@ function SearchCat() {
   }, {});
 
   const handleCategoryClick = (category) => {
-    setSelectedCategory(category);
+    setSelectedCategory(category === "All Products" ? null : category);
+    userData(category === "All Products" ? null : category);
   };
-
-
 
   return (
     <div className="container">
       <div className="sidebar" style={{position:"absolute", top: "150px", left:"15px"}}>
-      <div class="filter-sort">
-  <h2>Filter & Sort</h2>
-  <form>
-    <h3>Sort by:</h3>
-    <label>
-      <input type="radio" name="sort" value="name-asc" />
-      Name (A-Z)
-    </label>
-    <label>
-      <input type="radio" name="sort" value="name-desc" />
-      Name (Z-A)
-    </label>
-    <label>
-      <input type="radio" name="sort" value="type-L" />
-      Category: Leggings
-    </label>
-    <label>
-      <input type="radio" name="sort" value="type-M" />
-      Category: Make-up
-    </label>
-    <label>
-      <input type="radio" name="sort" value="type-P" />
-      Category: Perfume
-    </label>
-
-    <h3>Filter by:</h3>
-    <label>
-      <input type="checkbox" name="color" value="red" />
-      Red
-    </label>
-    <label>
-      <input type="checkbox" name="color" value="blue" />
-      Blue
-    </label>
-    <label>
-      <input type="checkbox" name="color" value="green" />
-      Green
-    </label>
-    
-    <label>
-      <input type="checkbox" name="type" value="shirt" />
-      Shirt
-    </label>
-    <label>
-      <input type="checkbox" name="type" value="pants" />
-      Pants
-    </label>
-    <label>
-      <input type="checkbox" name="type" value="shoes" />
-      Shoes
-    </label>
-
-  </form>
+        <div class="filter-sort">
+          <h2>Filter & Sort</h2>
+          <form>
+            <h3>Sort by:</h3>
+            <label>
+              <input type="radio" name="sort" value="all-products" onChange={() => handleCategoryClick('All Products')} checked={selectedCategory === null}/>
+              All Products
+            </label>
+            <label>
+              <input type="radio" name="sort" value="type-L" onChange={() => handleCategoryClick('Leggings')} checked={selectedCategory === 'Leggings'}/>
+              Category: Leggings
+            </label>
+            <label>
+              <input type="radio" name="sort" value="type-M" onChange={() => handleCategoryClick('Make-up')} checked={selectedCategory === 'Make-up'}/>
+              Category: Make-up
+            </label>
+            <label>
+              <input type="radio" name="sort" value="type-P" onChange={() => handleCategoryClick('Perfume')} checked={selectedCategory === 'Perfume'}/>
+              Category: Perfume
+            </label>
+          </form>
 </div>
 
       </div>
@@ -130,54 +97,57 @@ function SearchCat() {
                 margin: "10px 0",
               }}
             >
-              <p style={{ fontSize: "18px", fontWeight: "bold", margin: "0" }}>
-                {category}
+              <p className={`category-${category.toLowerCase().replace(/\s/g, "-")}`} style={{ fontSize: "18px", fontWeight: "bold", margin: "0" }}>
+              {category}
               </p>
               <div style={{ display: "flex", flexWrap: "wrap" }}>
-                {products.map((product) => (
-                  <div
-                    key={product.id}
-                    style={{
-                      border: "1px solid #ccc",
-                      padding: "10px",
-                      borderRadius: "5px",
-                      margin: "10px",
-                      flexBasis: "45%",
-                      display: "flex",
-                      flexDirection: "row",
-                    }}
-                  >
-                    <a href={`search/${product.id}`}>
-                      <img
-                        style={{
-                          margin: "0 auto",
-                          height: "150px",
-                          width: "150px",
-                        }}
-                        src={product.photoUrl}
-                        alt="product"
-                      />
-                    </a>
-                    <a href={product.link}><div style={{ flexGrow: "1", textAlign: "center" }}>
-                      <p
-                        style={{
-                          fontSize: "16px",
-                          fontWeight: "bold",
-                          margin: "0",
-                        }}
-                      >
-                        {product.name}
-                      </p>
-                      <p style={{ fontSize: "16px", margin: "0" }}>
-                        {product.brandname}
-                      </p>
-                      <p style={{ fontSize: "14px", margin: "0" }}>
-                        {product.description} <br></br>CLICK HERE TO BUY
-                      </p>
-                    </div></a>
-                  </div>
-                ))}
-              </div>
+  {products.map((product) => (
+    <div
+      key={product.id}
+      className={`product-${product.name.toLowerCase().replace(/\s/g, "-")}`}
+      style={{
+        border: "1px solid #ccc",
+        padding: "10px",
+        borderRadius: "5px",
+        margin: "10px",
+        flexBasis: "45%",
+        display: "flex",
+        flexDirection: "row",
+      }}
+    >
+      <a href={`search/${product.id}`}>
+        <img
+          style={{
+            margin: "0 auto",
+            height: "150px",
+            width: "150px",
+          }}
+          src={product.photoUrl}
+          alt="product"
+        />
+      </a>
+      <a href={product.link}>
+        <div style={{ flexGrow: "1", textAlign: "center" }}>
+          <p
+            style={{
+              fontSize: "16px",
+              fontWeight: "bold",
+              margin: "0",
+            }}
+          >
+            {product.name}
+          </p>
+          <p style={{ fontSize: "16px", margin: "0" }}>
+            {product.brandname}
+          </p>
+          <p style={{ fontSize: "14px", margin: "0" }}>
+            {product.description} <br></br>CLICK HERE TO BUY
+          </p>
+        </div>
+      </a>
+    </div>
+  ))}
+</div>
             
             </div>
           ))}
@@ -190,6 +160,10 @@ function SearchCat() {
 }
 
 
-
+export const category = {
+  Leggings: 'Leggings',
+  MakeUp: 'Make-up',
+  Perfume: 'Perfume',
+};
 
 export default SearchCat;

@@ -1,30 +1,32 @@
-import React from 'react'
-import Leggings from '../../assets/leggings.webp'
-import MakeUp from '../../assets/makeup.webp'
-import Perfume from '../../assets/perfume.jpg'
+import React from 'react';
+import Leggings from '../../assets/leggings.webp';
+import MakeUp from '../../assets/makeup.webp';
+import Perfume from '../../assets/perfume.jpg';
+import { Link } from 'react-router-dom';
+import { SearchCat } from '../../Pages/SearchCat';
+import {category} from '../../Pages/SearchCat';
 
 
 
 function Comparisons() {
-                  return (
-                <div className='comparisons'>
-                    <div className='container'>
-                        <h1>Choose from any of our Categories</h1>
-                        <div className="img-container">
-                        <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" width="0" height="0" alt="" />
-                        <a href="./search" target="_blank" rel="noreferrer">
-                            <img src={Leggings} alt="Leggings"></img>
-                        </a>
-                        <a href="./search" target="_blank" rel="noreferrer">
-                             <img src={MakeUp} alt="Make-Up"></img>
-                             </a>
-                        <a href="./search" target="_blank" rel="noreferrer">
-                            <img src={Perfume} alt="Perfume"></img>
-                           </a>
-                        </div>
-                    </div>
-                </div>
-            )
-        }
+  return (
+    <div className='comparisons'>
+      <div className='container'>
+        <h1>Choose from any of our Categories</h1>
+        <div className='img-container'>
+        <Link to={`/search/${category.Leggings}`}>
+             <img src={Leggings} alt='Leggings' />
+        </Link>
+        <Link to={`/search/${category.MakeUp}`}>
+            <img src={MakeUp} alt='Make-Up' />
+        </Link>
+        <Link to={`/search/${category.Perfume}`}>
+            <img src={Perfume} alt='Perfume' />
+        </Link>
+        </div>
+      </div>
+    </div>
+  );
+}
 
-export default Comparisons
+export default Comparisons;
