@@ -3,6 +3,8 @@ import { collection, query, where, getDocs } from "firebase/firestore";
 import { db } from "../firebase/firebase";
 import { useLocation } from "react-router-dom";
 import "./SearchCat.css";
+import { Link } from "react-router-dom";
+
 
 function SearchCat() {
   const [details, setDetails] = useState([]);
@@ -101,52 +103,52 @@ function SearchCat() {
               {category}
               </p>
               <div style={{ display: "flex", flexWrap: "wrap" }}>
-  {products.map((product) => (
-    <div
-      key={product.id}
-      className={`product-${product.name.toLowerCase().replace(/\s/g, "-")}`}
-      style={{
-        border: "1px solid #ccc",
-        padding: "10px",
-        borderRadius: "5px",
-        margin: "10px",
-        flexBasis: "45%",
-        display: "flex",
-        flexDirection: "row",
-      }}
-    >
-      <a href={`search/${product.id}`}>
-        <img
+              {products.map((product) => (
+  <div
+    key={product.id}
+    className={`product-${product.name.toLowerCase().replace(/\s/g, "-")}`}
+    style={{
+      border: "1px solid #ccc",
+      padding: "10px",
+      borderRadius: "5px",
+      margin: "10px",
+      flexBasis: "45%",
+      display: "flex",
+      flexDirection: "row",
+    }}
+  >
+    <Link to={`/product/${product.id}`}>
+      <img
+        style={{
+          margin: "0 auto",
+          height: "150px",
+          width: "150px",
+        }}
+        src={product.photoUrl}
+        alt={product.name}
+      />
+    </Link>
+    <Link to={`/product/${product.id}`}>
+      <div style={{ flexGrow: "1", textAlign: "center" }}>
+        <p
           style={{
-            margin: "0 auto",
-            height: "150px",
-            width: "150px",
+            fontSize: "16px",
+            fontWeight: "bold",
+            margin: "0",
           }}
-          src={product.photoUrl}
-          alt="product"
-        />
-      </a>
-      <a href={product.link}>
-        <div style={{ flexGrow: "1", textAlign: "center" }}>
-          <p
-            style={{
-              fontSize: "16px",
-              fontWeight: "bold",
-              margin: "0",
-            }}
-          >
-            {product.name}
-          </p>
-          <p style={{ fontSize: "16px", margin: "0" }}>
-            {product.brandname}
-          </p>
-          <p style={{ fontSize: "14px", margin: "0" }}>
-            {product.description} <br></br>CLICK HERE TO BUY
-          </p>
-        </div>
-      </a>
-    </div>
-  ))}
+        >
+          {product.name}
+        </p>
+        <p style={{ fontSize: "16px", margin: "0" }}>
+          {product.brandname}
+        </p>
+        <p style={{ fontSize: "14px", margin: "0" }}>
+          {product.description} <br></br>CLICK HERE TO BUY
+        </p>
+      </div>
+    </Link>
+  </div>
+))}
 </div>
             
             </div>

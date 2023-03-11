@@ -41,6 +41,7 @@ function Home() {
   
     const handleSearch = async (event) => {
       event.preventDefault();
+      navigate(`/details?brandname=${searchTerm}`);
       const q = query(productsRef, where("brandname", "==", searchTerm));
       const querySnapshot = await getDocs(q);
       const options = [];
@@ -115,7 +116,7 @@ function Home() {
                 <ul>
                   {dropdownOptions.map((option) => (
                     <li key={option} onClick={() => handleOptionClick(option)}>
-                      <a href="/search" style={{ color: "black" }}>
+                      <a href="/details" style={{ color: "black" }}>
                         {option}
                       </a>
                     </li>
