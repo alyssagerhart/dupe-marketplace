@@ -128,7 +128,7 @@ function SearchCat() {
         alt={product.name}
       />
     </Link>
-    <Link to={`/product/${product.id}`}>
+    <Link to={product.link}>
       <div style={{ flexGrow: "1", textAlign: "center" }}>
         <p
           style={{

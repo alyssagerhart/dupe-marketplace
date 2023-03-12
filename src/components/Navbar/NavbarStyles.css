@@ -26,16 +26,16 @@
     margin: 3rem;
 }
 
-.hamburger {
-    display: none;
-}
-
-.mobile-menu{
-    display: none;
-}
-
 .icon{
     font-size: 1.5rem;
     cursor: pointer;
 }
 
+.corner{
+    position: absolute;
+    top: 0;
+    right: 100px;
+    padding: 1rem;
+    margin: 1rem;
+    background-color: transparent;
+}
