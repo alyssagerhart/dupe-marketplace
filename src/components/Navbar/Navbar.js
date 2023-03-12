@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { BiSearch } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { db } from "../../firebase/firebase";
@@ -14,7 +13,7 @@ function Navbar() {
   // Set up state variables
   const [isNavVisible] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
-  const [searchResults, setSearchResults] = useState([]);
+  const [searchResults] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [dropdownOptions, setDropdownOptions] = useState([]);
   const [details, setDetails] = useState([]);

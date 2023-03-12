@@ -117,7 +117,7 @@ function SearchCat() {
       flexDirection: "row",
     }}
   >
-    <Link to={`/product/${product.id}`}>
+    <Link to={`/details/${product.id}`}>
       <img
         style={{
           margin: "0 auto",
