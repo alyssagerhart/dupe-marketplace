@@ -29,6 +29,7 @@ const SuggestForm = () => {
   }
 
   const submitData = async (e) => {
+    alert('Your item has been submitted!')
     e.preventDefault()
 
     const database = getFirestore(firebaseApp)
@@ -46,7 +47,6 @@ const SuggestForm = () => {
     // get data from form and add image url
     const {brandname, category, name, description, link} = formData
     const newProduct = {
-      id: productRef.id,
       brandname,
       category,
       name,
@@ -59,6 +59,14 @@ const SuggestForm = () => {
 
     // add data to firestore
     await setDoc(productRef, newProduct)
+
+    setFormData({
+      category: '',
+      name: '',
+      brandname: '',
+      description: '',
+      link: '',
+    });
   }
 
 return(
@@ -96,7 +104,7 @@ return(
             onChange={handleFileSelect}
           ></input>
 
-          <label for="dupedescription">Review of Item:</label>
+          <label for="dupedescription">Description of Item:</label>
           <textarea
             onChange={handleInputChange}
             id="dupedescription"
