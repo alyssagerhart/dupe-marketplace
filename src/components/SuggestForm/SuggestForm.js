@@ -29,7 +29,7 @@ const SuggestForm = () => {
   }
 
   const submitData = async (e) => {
-    alert('Your item has been submitted!')
+    alert('Your item has been submitted! View now by clicking "Browse"')
     e.preventDefault()
 
     const database = getFirestore(firebaseApp)
