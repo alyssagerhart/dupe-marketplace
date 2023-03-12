@@ -46,6 +46,7 @@ const SuggestForm = () => {
     // get data from form and add image url
     const {brandname, category, name, description, link} = formData
     const newProduct = {
+      id: productRef.id,
       brandname,
       category,
       name,
@@ -95,7 +96,7 @@ return(
             onChange={handleFileSelect}
           ></input>
 
-          <label for="dupedescription">Description of Item:</label>
+          <label for="dupedescription">Review of Item:</label>
           <textarea
             onChange={handleInputChange}
             id="dupedescription"

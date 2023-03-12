@@ -3,7 +3,6 @@ import Leggings from '../../assets/leggings.webp';
 import MakeUp from '../../assets/makeup.webp';
 import Perfume from '../../assets/perfume.jpg';
 import { Link } from 'react-router-dom';
-import { SearchCat } from '../../Pages/SearchCat';
 import {category} from '../../Pages/SearchCat';
 
 

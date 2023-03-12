@@ -1,16 +1,12 @@
 import React, { useState } from 'react'
-import './HomeStyles.css'
 import { db } from '../../firebase/firebase'
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
-
 import Video from '../../assets/shoppingtl.mp4'
+import './HomeStyles.css'
 
 const productsRef = collection(db, "products");
-
-
-
 
 function Home() {
     const [searchTerm, setSearchTerm] = useState("");
@@ -19,12 +15,6 @@ function Home() {
     const navigate = useNavigate();
     const [products, setProducts] = useState([]);
 
-
-    // const handleDropdownSelect = (selectedOption) => {
-    //   setSearchTerm(selectedOption);
-    //   navigate.push(`/search?brandname=${selectedOption}`);
-    // };
-  
     const userData = async () => {
       const q = query(collection(db, "products"));
       const querySnapshot = await getDocs(q);
@@ -46,12 +36,16 @@ function Home() {
       const querySnapshot = await getDocs(q);
       const options = [];
       querySnapshot.forEach((doc) => {
-        const brand = doc.data().brandname;
-        if (!options.includes(brand)) {
-          options.push(brand);
+        const product = doc.data();
+        if (!options.includes(product.brandname)) {
+          options.push({
+            label: product.brandname,
+            id: doc.id,
+          });
         }
       });
       setDropdownOptions(options);
+
   
       const filteredDupes = details.filter((dupe) =>
         dupe.name.toLowerCase().includes(searchTerm.toLowerCase())
@@ -76,9 +70,12 @@ function Home() {
         const querySnapshot = await getDocs(q);
         const options = [];
         querySnapshot.forEach((doc) => {
-          const brand = doc.data().brandname;
-          if (!options.includes(brand)) {
-            options.push(brand);
+          const product = doc.data();
+          if (!options.includes(product.brandname)) {
+            options.push({
+              label: product.brandname,
+              id: doc.id,
+            })
           }
         });
         setDropdownOptions(options);
@@ -90,7 +87,7 @@ function Home() {
     const handleOptionClick = (option) => {
       setSearchTerm(option);
       setDropdownOptions([]);
-      navigate.push(`/search?brandname=${option}`);
+      navigate(`/details/${option.id}`);
     };
   
     return (
@@ -115,10 +112,8 @@ function Home() {
               {dropdownOptions.length > 0 && (
                 <ul>
                   {dropdownOptions.map((option) => (
-                    <li key={option} onClick={() => handleOptionClick(option)}>
-                      <a href="/details" style={{ color: "black" }}>
-                        {option}
-                      </a>
+                    <li key={option.id} onClick={() => handleOptionClick(option)}>
+                        {option.label}
                     </li>
                   ))}
                 </ul>
