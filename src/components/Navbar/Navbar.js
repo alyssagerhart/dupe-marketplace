@@ -86,15 +86,14 @@ function Navbar() {
         </li>
       </ul>
       <div className="nav-icons">
-        {showSearch ? (
-          <form>
+          <form style={{position:"absolute", right:"10px", top:"20px", width:"150px"}}>
             <input
                 type="text"
                 placeholder="Search..."
                 onChange={handleSearchInput}
                 value={searchResults.name}
              />
-        <div className="dropdown">
+        <div className="dropdown" style={{position:"absolute", right:"-2px", top:"81px", width:"150px"}}>
             {dropdownOptions.length > 0 && (
               <ul>
               {dropdownOptions.map((option) => (
@@ -106,11 +105,6 @@ function Navbar() {
           )}
         </div>
           </form>
-        ) : (
-          <button className="corner" onClick={handleSearchClick}>
-            <BiSearch className="icon" style={{ marginRight: "1rem" }} />
-          </button>
-        )}
       </div>
     </div>
   );
