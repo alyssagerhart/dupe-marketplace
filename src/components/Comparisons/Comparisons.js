@@ -7,7 +7,7 @@ import HeyNut from '../../assets/HeyNut.JPG'
 
 function Comparisons() {
     return (
-        <div className='comparisons'>
+        <div className='comparisons'style={{position:"absolute", left:"0px", top:"1310px"}}>
             <div className='container'>
                 <h1>Make Informed Decisions On Every Day Purchases</h1>
                 <div className="img-container">

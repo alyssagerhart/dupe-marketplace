@@ -26,7 +26,7 @@ const DetailProductPage = () => {
           <img
             src={product.photoUrl}
             alt={product.name}
-            style={{ height: "40%", width: "20%", borderRadius: "0.5rem", boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.1)",position: "absolute", top: "90px", left:"650px" }}
+            style={{ height: "40%", width: "20%", borderRadius: "0.5rem", boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.1)",position: "absolute", top: "110px", left:"650px" }}
           />
         </div>
         <div style={{ width: "80%", marginTop: "10px", marginRight: "10px", position: "absolute", top: "450px", left:"175px", textAlign:"center" }}>

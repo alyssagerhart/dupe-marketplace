@@ -12,11 +12,11 @@ const productsRef = collection(db, "products");
 function Navbar() {
   // Set up state variables
   const [isNavVisible] = useState(false);
-  const [showSearch, setShowSearch] = useState(false);
+  // const [, setShowSearch] = useState(false);
   const [searchResults] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [, setSearchTerm] = useState("");
   const [dropdownOptions, setDropdownOptions] = useState([]);
-  const [details, setDetails] = useState([]);
+  const [, setDetails] = useState([]);
   const navigate = useNavigate();
 
   const handleOptionClick = (option) => {
@@ -40,7 +40,7 @@ function Navbar() {
   };
 
   // Handle search click event
-  const handleSearchClick = () => setShowSearch(true);
+  // const handleSearchClick = () => setShowSearch(true);
 
   // Handle search input event
   const handleSearchInput = async (event) => {
@@ -73,7 +73,7 @@ function Navbar() {
       <div className={isNavVisible ? "logo dark" : "logo"}>
         <h2>DUPE.</h2>
       </div>
-      <ul className="nav-menu">
+      <ul className="nav-menu"style={{position:"absolute", left:"500px"}}>
         <li>
           <Link to="/">Home</Link>
         </li>
@@ -85,14 +85,14 @@ function Navbar() {
         </li>
       </ul>
       <div className="nav-icons">
-          <form style={{position:"absolute", right:"10px", top:"20px", width:"150px"}}>
+          <form style={{position:"absolute", right:"10px", top:"20px", width:"200px"}}>
             <input
                 type="text"
                 placeholder="Search..."
                 onChange={handleSearchInput}
                 value={searchResults.name}
              />
-        <div className="dropdown" style={{position:"absolute", right:"-2px", top:"81px", width:"150px"}}>
+        <div className="dropdown" style={{position:"absolute", right:"-2px", top:"81px", width:"200px"}}>
             {dropdownOptions.length > 0 && (
               <ul>
               {dropdownOptions.map((option) => (

@@ -72,7 +72,7 @@ const SuggestForm = () => {
 return(
  <div className="bri">
       <div className="form">
-        <form onSubmit={submitData} style={{position: "absolute", top:"100px", left:"42%"}}>
+        <form onSubmit={submitData} style={{position: "absolute", top:"100px", left:"580px"}}>
           <select
             onChange={handleInputChange}
             id="dupecategory"
@@ -104,7 +104,7 @@ return(
             onChange={handleFileSelect}
           ></input>
 
-          <label for="dupedescription">Description of Item:</label>
+          <label for="dupedescription">Review of Item:</label>
           <textarea
             onChange={handleInputChange}
             id="dupedescription"

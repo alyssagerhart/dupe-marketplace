@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 function Comparisons() {
   return (
     <div className='comparisons'>
-      <div className='container'>
+      <div className='container' style={{position:"absolute", left:"300px", top:"800px"}}>
         <h1>Choose from any of our Categories</h1>
         <div className='img-container'>
         <Link to={`/search`}>
