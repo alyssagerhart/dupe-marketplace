@@ -7,11 +7,17 @@ import { Link } from "react-router-dom";
 
 
 function SearchCat() {
+
+  //set up state variables
   const [details, setDetails] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const location = useLocation();
   const [, setProducts] = useState([]);
 
+//searches the brand name component for the equal brandname from firebase
+// and adds the data to the productsData array
+// then sets the products state variable to the productsData array
+// this is used to display the products on the page
   useEffect(() => {
     const brandname = new URLSearchParams(location.search).get("brandname");
     const fetchProducts = async () => {
@@ -29,6 +35,10 @@ function SearchCat() {
     fetchProducts();
   }, [location]);
 
+  // creates a firebase query to get all the products passing in the products collection
+  // then it retrieves the data from the query and adds the id to the data
+  // then it sets the details state variable to the data
+  // this is used to display the products on the page
   const userData = async (selectedCategory) => {
     const q = query(collection(db, "products"));
     const querySnapshot = await getDocs(q);
@@ -39,14 +49,17 @@ function SearchCat() {
     setDetails(selectedCategory ? data.filter((product) => product.category === selectedCategory) : data);
   };
 
+  // calls the userData function when the page loads
   useEffect(() => {
     userData();
   }, []);
 
+  // filters the data by the selected category
   const filteredData = details.filter(
     (product) => selectedCategory === null || product.category === selectedCategory
   );
 
+  // groups the data by category
   const groupedData = filteredData.reduce((acc, curr) => {
     if (curr.category in acc) {
       acc[curr.category].push(curr);
@@ -56,6 +69,7 @@ function SearchCat() {
     return acc;
   }, {});
 
+  // handles the category click if they click All products it changes the selected category to show all products
   const handleCategoryClick = (category) => {
     setSelectedCategory(category === "All Products" ? null : category);
     userData(category === "All Products" ? null : category);
@@ -160,12 +174,5 @@ function SearchCat() {
   )          
 
 }
-
-
-export const category = {
-  Leggings: 'Leggings',
-  MakeUp: 'Make-up',
-  Perfume: 'Perfume',
-};
 
 export default SearchCat;

@@ -1,20 +1,22 @@
 import React, { useState } from 'react'
+import Video from '../../assets/shoppingtl.mp4'
 import { db } from '../../firebase/firebase'
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
-import Video from '../../assets/shoppingtl.mp4'
 import './HomeStyles.css'
 
 const productsRef = collection(db, "products");
 
 function Home() {
+   // Set up state variables
     const [searchTerm, setSearchTerm] = useState("");
     const [dropdownOptions, setDropdownOptions] = useState([]);
     const [details, setDetails] = useState([]);
     const navigate = useNavigate();
     const [products, setProducts] = useState([]);
 
+    //get the data from the database and put it into a object called userData
     const userData = async () => {
       const q = query(collection(db, "products"));
       const querySnapshot = await getDocs(q);
@@ -25,13 +27,19 @@ function Home() {
       setDetails(data);
     };
   
+    //use the useEffect hook to call the userData function
     useEffect(() => {
       userData();
     }, []);
-  
+
+
+    //function to handle the search by brandname by using the searchTerm
+    // variable and the dropdownOptions variable to render a suggestion
+    // list when the user types in the search bar then filter the data
+    // by the searchTerm variable and set the products variable to the
+    // filtered data and then render the data to the page
     const handleSearch = async (event) => {
       event.preventDefault();
-      navigate(`/details?brandname=${searchTerm}`);
       const q = query(productsRef, where("brandname", "==", searchTerm));
       const querySnapshot = await getDocs(q);
       const options = [];
@@ -46,14 +54,21 @@ function Home() {
       });
       setDropdownOptions(options);
 
-  
+      //filter the data by the searchTerm variable
+      //and set the products variable to the filtered data
+      //and then render the data to the page
       const filteredDupes = details.filter((dupe) =>
         dupe.name.toLowerCase().includes(searchTerm.toLowerCase())
       );
       setProducts(filteredDupes);
     };
-  
-    const groupedData = details.reduce((acc, curr) => {
+    
+    //function to handle the search by category by using the searchTerm
+    // variable and the dropdownOptions variable to render a suggestion
+    // list when the user types in the search bar then filter the data
+    // by the searchTerm variable and set the products variable to the
+    // filtered data and then render the data to the page
+      const groupedData = details.reduce((acc, curr) => {
       if (curr.category in acc) {
         acc[curr.category].push(curr);
       } else {
@@ -61,7 +76,12 @@ function Home() {
       }
       return acc;
     }, {});
-  
+    
+    // function to handle the search by brandname by using the searchTerm
+    // variable and the dropdownOptions variable to render a suggestion
+    // if the user types in the search bar and if the option is not something
+    // in the database then it shows nothing 
+
     const handleInputChange = async (event) => {
       const input = event.target.value;
       setSearchTerm(input);
@@ -83,7 +103,10 @@ function Home() {
         setDropdownOptions([]);
       }
     };
-  
+    
+    //function to handle the click event on the suggestion list
+    //and then navigate to the details page
+
     const handleOptionClick = (option) => {
       setSearchTerm(option);
       setDropdownOptions([]);
