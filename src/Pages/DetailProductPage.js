@@ -5,9 +5,13 @@ import { getDocs, query, where, collection } from "firebase/firestore";
 import { db } from "../firebase/firebase";
 
 const DetailProductPage = () => {
+
+  //set up state variables
   const [product, setProduct] = useState({});
   const { productId } = useParams();
 
+  // Call product category from firebase
+  // set the product state variable to the data from the product
   useEffect(() => {
     const productsRef = collection(db, "products");
     const q = query(productsRef, where("id", "==", productId));
@@ -33,6 +37,7 @@ const DetailProductPage = () => {
           <h1 style={{ fontSize: "3rem", fontWeight: "bold", marginBottom: "0.5rem" }}>{product.name}</h1>
           <h2 style={{ fontSize: "1.5rem", fontWeight: "500", marginBottom: "0.5rem" }}>Brand name item: {product.brandname}</h2>
           <p style={{ fontSize: "1rem", marginBottom: ".5rem" }}>Review: {product.description}</p>
+          <br></br>
           <a href={product.link}>Click Here To Buy</a>
         </div>
       </div>

@@ -12,23 +12,26 @@ const productsRef = collection(db, "products");
 function Navbar() {
   // Set up state variables
   const [isNavVisible] = useState(false);
-  // const [, setShowSearch] = useState(false);
   const [searchResults] = useState([]);
   const [, setSearchTerm] = useState("");
   const [dropdownOptions, setDropdownOptions] = useState([]);
   const [, setDetails] = useState([]);
   const navigate = useNavigate();
 
+  // Handle option click event so if they click on the suggestion
+  // it will take them to the details page
   const handleOptionClick = (option) => {
     setSearchTerm(option);
     setDropdownOptions([]);
     navigate(`/details/${option.id}`);
   };
 
+ //use the useEffect hook to call the userData function
   useEffect(() => {
     userData();
   }, []);
 
+  // Get the data from the database and put it into a object called userData
   const userData = async () => {
     const q = query(collection(db, "products"));
     const querySnapshot = await getDocs(q);
@@ -39,10 +42,11 @@ function Navbar() {
     setDetails(data);
   };
 
-  // Handle search click event
-  // const handleSearchClick = () => setShowSearch(true);
-
-  // Handle search input event
+    //function to handle the search by brandname by using the searchTerm
+    // variable and the dropdownOptions variable to render a suggestion
+    // list when the user types in the search bar then filter the data
+    // by the searchTerm variable and set the products variable to the
+    // filtered data and then render the data to the page
   const handleSearchInput = async (event) => {
     const input = event.target.value;
     setSearchTerm(input);
