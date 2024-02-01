@@ -6,6 +6,8 @@ import {collection, doc, getFirestore, setDoc} from 'firebase/firestore'
 import './SuggestForm.css'
 
 const SuggestForm = () => {
+
+  // set up state variables
   const [file, setFile] = useState(null)
   const [formData, setFormData] = useState({
     category: '',
@@ -15,12 +17,16 @@ const SuggestForm = () => {
     link: '',
   })
 
+  // handle file select to set the file state variable
+  // to the file that was selected 
   const handleFileSelect = (e) => {
     if (e.target.files[0]) {
       setFile(e.target.files[0])
     }
   }
 
+  // handle input change to set the form data state variable
+  // to the value of the input field
   const handleInputChange = (e) => {
     setFormData({
       ...formData,
@@ -28,6 +34,9 @@ const SuggestForm = () => {
     })
   }
 
+  // submit data to firestore
+  // upload image to firebase storage
+  // get data from form and add image url
   const submitData = async (e) => {
     alert('Your item has been submitted! View now by clicking "Browse"')
     e.preventDefault()
